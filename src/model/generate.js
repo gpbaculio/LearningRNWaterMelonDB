@@ -29,6 +29,7 @@ const makeComment = (db, post, i) =>
   db.collections.get('comments').prepareCreate(comment => {
     comment.body = commentBodies[i] || `Comment#${comment.id}`;
     comment.post.set(post);
+    comment.isPressed = false;
     comment.isNasty = Math.random() < 0.25; // People can be not nice on the internet
   });
 
